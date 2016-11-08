@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+
+/*Media Queries*/
+
+@media screen and (max-width:960px) {
+  .compact {display: inline;} .full{display: none;} }
+@media screen and (min-width: 960px) {
+  .full {display: inline;} .compact {display: none;} }
+@media screen and (max-width:800px) { footer span {display: block;} }
+
+/*Shapes*/
+
+body {box-sizing: border-box;  margin:0 auto; min-width:480px;}
+main, footer {max-width: 1280px; margin: 0 auto;}
+main {padding: 50px 0;}
+
+nav ul { max-width:1280px; min-width:400px; list-style:none; 
+  margin: -10px auto 0 auto; padding: 20px 20px 10px 20px; }
+nav .flex-base{
+  display: flex; display: wrap; flex-direction: row;
+  justify-content: space-between;}
+nav .subnav {
+  display: flex; display: wrap;
+  flex-direction: row; justify-content: space-around;}
+nav .subnav a {margin: 0 10px;}
+.btn { text-align: center; border: solid 2px; border-radius:5px; padding: 0 10px;}
+form.Input .btn {text-align: center; border: solid 2px; border-radius:3px; padding: 10px; width: 100px;}
+
+h2 {width: 100%;}
+.title {display: flex; flex-wrap: nowrap; justify-content:space-between; width: 70%; min-width: 400px; margin: 0 auto;}
+form.Top, form.Normal {display: flex; flex-wrap: wrap; justify-content:space-between; 
+                       width: 70%; min-width: 400px; margin: 0 auto; padding: 10px 0; border-bottom: 1px dashed;}
+.To-do {width: 50%;}
+.Until {width: 20%;}
+.Description {width: 50%;}
+form.Input {display: flex; flex-wrap: wrap; justify-content:flex-end; width: 50%; min-width: 400px; margin: 0 auto; padding: 10px 0;}
+form.Input label {width: 30%; text-align: right;}
+#left {padding-right:10px;}
+form.Input input,form.Input select, form.Input textarea {width: 65%; border: none; padding: 5px; 
+                                                         margin:5px; border: 2px solid; border-radius: 2px;}
+form.Input textarea {height: 100px;}
+
+
+footer {padding: 15px 0;}
+footer span { margin: 10px;}
+
+/*Typography*/
+
+header, main, footer {font-family: "Oleo Script", "Impact", Charcoal, sans-serif;}
+nav .flex-base{font-size: 1em;}
+nav ul li {font-size:1.5em;}
+nav .subnav {font-size: 1.5em;}
+nav .btn {font-size: 1.3em;}
+main {font-size: 1.1em; text-align:center;}
+.title {font-size: 1.2em;}
+.To-do {text-align: left; font-size: 1.1em;}
+.Until {text-align: center; font-size: 1.1em;}
+.title .Until {margin-left:50px;}
+.Remove {text-align: right; font-size: 1.1em;}
+.Description {text-align: left; font-size: 1em;}
+footer {font-size: 1em; text-align:center;}
+a {text-decoration: none;}
+
+/*Colors*/
+
+nav {background-color: #222;}
+nav a {color: #dd7;}
+nav a:hover { color: #dd4;}
+nav a:active{ color: #dd4;}
+nav li:first-child a { color: #ddd;}
+nav li:first-child a:hover { color: #fff;}
+nav li:first-child a:active { color: #fff;}
+nav .strong {color: #d88;}
+nav .strong:hover {color: #f66;}
+nav .strong:active{color: #f66;}
+nav .btn {border-color:#8dd;}
+nav .btn:hover {color: #8ee; border-color:#6ee; box-shadow: 0 0 0 1px #6ee;}
+nav .btn a {color: #8dd;}
+nav .btn a:hover {color: #6ee;}
+nav .btn a:active {color: #6ee;}
+main .Top { color: #f33; }
+main .btn { background: transparent; color: #166; border-color: #166; }
+form.Input .btn {background: transparent; color: #166; border-color: #166;}
+main .btn:hover, form.Input .btn:hover {color: #388; border-color: #388; box-shadow: 0 0 0 1px #388;}
+form.Input input,form.Input select, form.Input textarea {background: transparent; border-color: #666;}
+label, h1, h2 {color: #222;}
+header {background-color: #222;}
+main {background-color: #ddd;}
+footer {background-color: #222; color: #ddd;}
+
+/* pattern found at http://lea.verou.me/css3patterns/#polka-dot*/
+body {background-color:#033; 
+background-image: radial-gradient(white 15%, transparent 16%),
+radial-gradient(white 15%, transparent 16%);
+background-size:60px 60px;
+background-position: 0 0, 30px 30px;}
