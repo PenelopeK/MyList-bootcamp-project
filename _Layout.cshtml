@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="~/Style.css" />
+        <title>@Page.Title</title>
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+
+        <header>
+            <nav>
+                <ul class="flex-base">
+                    <li> <a href="~/Home.cshtml"> My to-do list </a></li>
+                    <li class="flex-base subnav">
+                        <a href="~/Top.cshtml"> Top </a>
+                        <a href="~/ThisMonth.cshtml"> This Month </a>
+                    </li>
+                    <li> <a class="strong" href="~/AddNew.cshtml"> + New </a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <main id="@PageData["page-id"]" class="page-content">
+            @RenderBody()
+        </main>
+
+
+        <footer>
+            <span> My to-do list was created by Penelope Kaouni </span>
+            <span> Contact info: kaounip@gmail.com </span>
+        </footer>
+    </body>
+</html>
