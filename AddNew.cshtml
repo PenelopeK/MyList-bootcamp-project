@@ -1,0 +1,43 @@
+@{
+    Page.Title = "AddNew";
+    Layout = "~/_Layout.cshtml";
+}
+
+@{ MyListEntities Container = new MyListEntities();
+    <h2> Add new task </h2>
+    <form method="post" class="Input" name="newEntry">
+        
+        <label for="Title"> Title </label> 
+        <input type="text" pattern="[a-z0-9. -_()]+" 
+               title="Please enter only alphanumeric characters." 
+               name="Title" required/>
+        <label for="DueDate"> Due date </label> 
+        <input required type="date" name="DueDate"/>
+        <label for="Priority" id="left"> Priority </label> 
+            <select name="Priority">
+                <option value="Normal"> Normal </option>
+                <option value="Top"> Top </option> 
+            </select>
+        <label for=" Description"> Description </label> 
+        <textarea name = "Description" id="Description"> </textarea>
+        <input type="submit" class="btn" value="Submit"> 
+    </form>
+      
+
+   if (IsPost && !Request.Form["Title"].IsEmpty()){
+
+          Entries e = new Entries
+          {
+              UserID = 1,
+              Title = Request.Form["Title"],
+              DueDate = Request.Form["DueDate"].AsDateTime().Date,
+              Priority = Request.Form["Priority"],
+              Description = Request.Form["Description"]
+          };
+
+          Container.Entries.Add(@e);
+          Container.SaveChanges();
+          Response.Redirect("~/Home");
+      }
+
+  }
