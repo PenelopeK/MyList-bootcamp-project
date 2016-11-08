@@ -1,0 +1,114 @@
+@{
+    Page.Title = "Login";
+    Layout = "~/_Layout.cshtml";
+    Session["UserID"] = null;
+    Session["Username"] = null;
+    Session["Password"] = null;
+    MyListEntities Container = new MyListEntities();
+}
+
+<form class="Input" name="login" action="Login" method="post">
+    <h1>MyList helps you keep track of your upcoming tasks.</h1>
+    <h2> Have an account? Login to continue. </h2>
+    <input type="text" pattern="[a-z0-9. -_()]+" placeholder="Username"
+           title="Please enter only alphanumeric characters."
+           name="username" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <input type="hidden" name="login-form" value="login" />
+    <input type="submit" class="btn" name="Login" value="Login" />
+</form>
+
+@{
+    if (IsPost)
+    {
+        if (Request.Form["login-form"] == "login")
+        {
+
+            <div> Processing login data </div>
+
+            string name = Request.Form["username"];
+            string pwd = Request.Form["password"];
+
+            List<Users> tmp = Container.Users.Where(x => x.Name == name && x.Password == pwd).ToList();
+
+            if (tmp.Count == 0)
+            { <h2> Invalid name or password! Try again! </h2> }
+
+            else if (tmp.Count == 1)
+            {
+                Users user = tmp[0];
+                Session["UserID"] = user.Id;
+                Session["Username"] = user.Name;
+                Session["Password"] = user.Password;
+                Response.Redirect("~/Home");
+            }
+            else
+            { <h2> Validation error! Please contact system administrator... </h2> }
+
+        }
+    }
+}
+
+<form class="Input" name="register" action="Login" method="post">
+    <h2> Don't have one? Register now! </h2>
+    <input type="text" pattern="[a-z0-9. -_()]+"
+           title="Please enter only alphanumeric characters."
+           name="username" placeholder="Username" required />
+    <input type="email" name="email" placeholder="Email address" required />
+    <input type="password" name="password" pattern=".{6,}" placeholder="Password" 
+           title="Enter at least six characters." required />
+    <input type="password" name="confirm" pattern=".{6,}" placeholder="Confirm Password" 
+           title="Enter at least six characters." required />
+    <input type="hidden" name="register-form" value="register" />
+    <input type="submit" class="btn" name="Register" value="Register" />
+</form>
+
+
+@{
+    if (IsPost)
+    {
+        if (Request.Form["register-form"] == "register")
+        {
+
+            <div> Processing login data </div>
+
+            string name = Request.Form["username"];
+            string email = Request.Form["email"];
+            string pwd1 = Request.Form["password"];
+            string pwd2 = Request.Form["confirm"];
+
+            bool err = false;
+
+            if (pwd1 != pwd2)
+            {
+                err = true; <h2>Passwords don't match.</h2> }
+
+            List<Users> tmp = Container.Users.Where(x => x.Email == email).ToList();
+
+            if (tmp.Count > 0)
+            {
+                err = true; <h2> There is already a registered user with this email address. </h2> }
+
+            if (!err)
+            {
+                Users u = new Users
+                {
+                    Name = name,
+                    Email = email,
+                    Password = pwd1
+                };
+
+                Container.Users.Add(@u);
+                Container.SaveChanges();
+
+                int id = Container.Users.Where(x => x.Email == email).ToArray()[0].Id;
+                Session["UserID"] = id;
+                Session["Username"] = name;
+                Session["Password"] = pwd1;
+
+                Response.Redirect("~/Home");
+            }
+        }
+    }
+}
+
