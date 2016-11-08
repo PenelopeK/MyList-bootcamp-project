@@ -1,0 +1,41 @@
+@{
+    Page.Title = "Home";
+    Layout = "~/_Layout.cshtml";
+}
+
+@{ MyListEntities Container = new MyListEntities(); 
+
+
+   List<Entries> ent = Container.Entries.Where(x => x.UserID == 1).OrderBy(x => x.DueDate).ThenByDescending(x => x.Priority).ToList();
+
+        if (ent.Count == 0)
+        { <h1> Congratulations! Seems you've taken care of everything! </h1> }
+    else
+    {
+        <div class ="title"> <span class="To-do"> To-do </span>  <span class="Until"> Until </span> <span class="Remove"> Remove </span> </div>
+
+        for (int i = 0; i < ent.Count; i++)
+        {
+                <form class="@ent[i].Priority" action="Home" method="post">
+                    
+                    <span class="To-do"> @ent[i].Title  </span>
+                    <span class="Until"> @ent[i].DueDate.ToShortDateString() </span>
+                    <input type="submit" class="btn" name="X" value="X" />
+                    <div class="Description"> @ent[i].Description </div>
+                    <input type="hidden" name="delete-entry" value=@ent[i].Id />
+
+                </form>
+            }
+        }
+
+        if (IsPost && !Request.Form["delete-entry"].IsEmpty())
+        {
+
+            int reg = Request.Form["delete-entry"].AsInt();
+            Entries rem = Container.Entries.Where(x => x.Id == @reg).Single();
+            Container.Entries.Remove(rem);
+            Container.SaveChanges();
+            Response.Redirect("~/Home");
+        }
+
+    }
