@@ -17,26 +17,26 @@ main {padding: 50px 0;}
 nav ul { max-width:1280px; min-width:400px; list-style:none; 
   margin: -10px auto 0 auto; padding: 20px 20px 10px 20px; }
 nav .flex-base{
-  display: flex; display: wrap; flex-direction: row;
+  display: flex; display: flex; flex-direction: row;
   justify-content: space-between;}
 nav .subnav {
-  display: flex; display: wrap;
+  display: flex; display: flex;
   flex-direction: row; justify-content: space-around;}
 nav .subnav a {margin: 0 10px;}
 .btn { text-align: center; border: solid 2px; border-radius:5px; padding: 0 10px;}
-form.Input .btn {text-align: center; border: solid 2px; border-radius:3px; padding: 10px; width: 100px;}
+form.Input .btn {text-align: center; border: solid 2px; border-radius:3px; padding: 10px; max-width: 100px;}
 
 h2 {width: 100%;}
 .title {display: flex; flex-wrap: nowrap; justify-content:space-between; width: 70%; min-width: 400px; margin: 0 auto;}
-form.Top, form.Normal {display: flex; flex-wrap: wrap; justify-content:space-between; 
+.Top, .Normal {display: flex; flex-wrap: wrap; justify-content:space-between; 
                        width: 70%; min-width: 400px; margin: 0 auto; padding: 10px 0; border-bottom: 1px dashed;}
 .To-do {width: 50%;}
 .Until {width: 20%;}
 .Description {width: 50%;}
-form.Input {display: flex; flex-wrap: wrap; justify-content:flex-end; width: 50%; min-width: 400px; margin: 0 auto; padding: 10px 0;}
+form.Input {display: flex; flex-wrap: wrap; justify-content:flex-end; width: 40%; min-width: 400px; margin: 0 auto; padding: 10px 0;}
 form.Input label {width: 30%; text-align: right;}
 #left {padding-right:10px;}
-form.Input input,form.Input select, form.Input textarea {width: 65%; border: none; padding: 5px; 
+form.Input input,form.Input select, form.Input textarea {width: 100%; border: none; padding: 5px; 
                                                          margin:5px; border: 2px solid; border-radius: 2px;}
 form.Input textarea {height: 100px;}
 
@@ -93,4 +93,4 @@ body {background-color:#033;
 background-image: radial-gradient(white 15%, transparent 16%),
 radial-gradient(white 15%, transparent 16%);
 background-size:60px 60px;
-background-position: 0 0, 30px 30px;}
+background-position: 0 0 30px 30px;}
