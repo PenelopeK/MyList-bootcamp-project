@@ -3,10 +3,12 @@
     Layout = "~/_Layout.cshtml";
 }
 
-@{ MyListEntities Container = new MyListEntities();
+@{ if (Session["UserID"] == null) { Response.Redirect("~/Login"); }
+    int UserID = (int)Session["UserID"];
+    MyListEntities Container = new MyListEntities();
 
 
-    List<Entries> ent = Container.Entries.Where(x => x.UserID == 1 && x.DueDate.Month == DateTime.Now.Month).OrderBy(x => x.DueDate).ThenByDescending(x => x.Priority).ToList();
+    List<Entries> ent = Container.Entries.Where(x => x.UserID == UserID && x.DueDate.Month == DateTime.Now.Month && x.DueDate.Year == DateTime.Now.Year).OrderBy(x => x.DueDate).ThenByDescending(x => x.Priority).ToList();
 
     if (ent.Count == 0)
     { <h1> Congratulations! Seems you've taken care of everything! </h1> }
