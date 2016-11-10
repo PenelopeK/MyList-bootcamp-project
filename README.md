@@ -1,5 +1,4 @@
-# Note: 
-Azure currently has trouble running the app properly in provided link. To test its functionality, try running it localy instead.
+_Note: Azure currently has trouble running the app properly in provided link. To test its functionality, try running it localy instead. 
 
 
 # MyList
