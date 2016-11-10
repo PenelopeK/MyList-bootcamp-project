@@ -1,4 +1,4 @@
-# MyToDoList
+# MyList
 
 Simple full-stack to-do list, created in Visual studio. To run locally execute the .sql as a query in Visual Studio to create db, then copy all other files in project dir and build.
 
