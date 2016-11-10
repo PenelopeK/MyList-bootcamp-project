@@ -1,6 +1,3 @@
-_Note: Azure currently has trouble running the app properly in provided link. To test its functionality, try running it locally instead._
-
-
 # MyList
 
 Simple full-stack to-do list, created in Visual studio. To run locally execute the .sql as a query in Visual Studio to create db, then copy all other files in project dir and build.
